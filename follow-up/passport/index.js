@@ -1,6 +1,6 @@
 const passport = require('passport')
 const localStrategy = require('./localStrategy')
-const User = require('../models/users')
+const User = require('../models/user')
 
 // is called on login, this function saves the logged in user ID to a session through req.session
 passport.serializeUser((user, done) => {

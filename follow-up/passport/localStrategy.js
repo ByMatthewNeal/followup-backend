@@ -1,4 +1,5 @@
-const User = require('../models/users')
+const User = require('../models/user')
+// a strategy is really just a way that we log a user in to the site
 const localStrategy = require('passport-local').Strategy
 
 const strategy = new localStrategy(
@@ -13,7 +14,7 @@ const strategy = new localStrategy(
             // no user is found
             if (!foundUser) return done(null, false, { message: 'Invalid Credentials' })
             // user is found but password doesn't match
-            if (!user.checkPassword(password)) return done(null, false, { message: 'Invalid Credentials'})
+            if (!foundUser.checkPassword(password)) return done(null, false, { message: 'Invalid Credentials'})
             // return the user object
             return done(null, foundUser)
         })

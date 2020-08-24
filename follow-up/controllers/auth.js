@@ -3,10 +3,13 @@ const bcrypt = require('bcrypt')
 
 const login = (req, res) => {
 
+    console.log('req.user here >>>>>>>>>>', req.user)
+    console.log('req.session here >>>>>>>>>', req.session)
+    
+    res.json({ user: req.user.email })
 }
 
 const register = (req, res) => {
-    console.log(req.body, 'In the register')
     // validate the POSTed data - making sure we have a name, on email, a pw
     const { name, email, password } = req.body
     
