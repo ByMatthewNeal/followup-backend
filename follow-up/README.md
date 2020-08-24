@@ -1,3 +1,25 @@
+## Steps
+
+1. Installation and Configuration
+1. Create a file structure for authentication 
+    - controller (auth), model (user), routes (auth), ??? routes(user)
+    - connect file structure to the server
+1. Handle user passwords (bcrypt)
+1. Handle user login (passport)
+1. Handle user logout
+1. Verifying that a user is authorized (protecting specific routes)
+
+
+1. Tie this into the REACT app
+    - creating some components for logging in, registering, logging out
+    - making fetch requests to the user/auth related functionality on the server
+    - protecing certain components from an unauthorized
+
+
+User story example:
+As a user I should be able to log in. As a user when Im logged in I should be redirected to my profile page. (etc)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

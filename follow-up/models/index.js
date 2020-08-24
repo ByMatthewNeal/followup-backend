@@ -13,6 +13,6 @@ mongoose.connect(connectionString, configOptions)
     .catch(err => console.log(`MongoDB connection error: ${err}`))
 
 module.exports = {
-    Game: require('./game'),
+    App: require('./app'),
     User: require('./user')
 }
