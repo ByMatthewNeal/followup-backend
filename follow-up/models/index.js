@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const connectionString = process.env.MONGODB_URI || "mongodb://localhost:3000"
+const connectionString = process.env.MONGODB_URI || "mongodb://localhost:27017/followup"
 const configOptions = {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -14,5 +14,5 @@ mongoose.connect(connectionString, configOptions)
 
 module.exports = {
     App: require('./app'),
-    User: require('./user')
+    User: require('./users')
 }

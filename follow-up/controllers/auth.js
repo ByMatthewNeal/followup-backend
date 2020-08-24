@@ -6,6 +6,7 @@ const login = (req, res) => {
 }
 
 const register = (req, res) => {
+    console.log(req.body, 'In the register')
     // validate the POSTed data - making sure we have a name, on email, a pw
     const { name, email, password } = req.body
     
@@ -16,7 +17,7 @@ const register = (req, res) => {
     }
     // make sure the user doesn't already exist
     db.User.findOne({ email: email }, (err, foundUser) => {
-        if (err) return.res.json({
+        if (err) return res.json({
             message: 'Something went wrong'
         })
 
