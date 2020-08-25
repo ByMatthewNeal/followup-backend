@@ -5,7 +5,6 @@ const cors = require('cors')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const passport = require('./passport')
-// TODO: require passport and configure in middleware
 
 const port = process.env.PORT || 3001
 const app = express()
@@ -18,7 +17,7 @@ const corsOptions = {
     // from which URLs do we want to accept requests
     origin: [],
     credentials: true, //allow the session cookie to be sent back and forth to the client
-    optionSuccessStatus: 204
+    optionsSuccessStatus: 204
 }
 
 app.use(cors())
