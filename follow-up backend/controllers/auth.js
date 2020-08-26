@@ -8,17 +8,19 @@ const login = (req, res) => {
 }
 
 const register = (req, res) => {
-    console.log(req.body, 'In the register')
+    console.log(req.body, 'Register')
     // validate the POSTed data - making sure we have a name, on email, a pw
-    const { name, email, password } = req.body
+    const { name, email, password } = req.body.user
     
     if (!name || !email || !password) {
         return res.json({
             message: 'Please enter a name, an email and a password'
         })
     }
+    console.log("fields are not empty")
     // make sure the user doesn't already exist
     db.User.findOne({ email: email }, (err, foundUser) => {
+        console.log("foundUser", foundUser)
         if (err) return res.json({
             message: 'Something went wrong'
         })
@@ -33,15 +35,18 @@ const register = (req, res) => {
             email,
             password
         })
+console.log(newUser)
 
         newUser.save((err, savedUser) => {
             if (err) res.json(err)
-            res.json(savedUser)
+            console.log(savedUser)
+            return res.json(savedUser)
         })
     })
     
 
 }
+
 
 const logout = (req, res) => {
 
