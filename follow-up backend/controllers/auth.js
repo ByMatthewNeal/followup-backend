@@ -10,7 +10,7 @@ const login = (req, res) => {
 const register = (req, res) => {
     console.log(req.body, 'Register')
     // validate the POSTed data - making sure we have a name, on email, a pw
-    const { name, email, password } = req.body.user
+    const { name, email, password } = req.body
     
     if (!name || !email || !password) {
         return res.json({
@@ -49,7 +49,12 @@ console.log(newUser)
 
 
 const logout = (req, res) => {
-
+    if (!req.user) return res.json({
+      message: 'No User to log out'
+    })
+  
+    req.logout()
+    res.json({ message: "User logged out" })
 }
 
 // This is a utility function for developer use only

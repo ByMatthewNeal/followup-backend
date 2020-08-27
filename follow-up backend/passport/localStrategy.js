@@ -8,6 +8,8 @@ const strategy = new localStrategy(
     function(email, password, done) {
         // find a user through the unique property - email
         User.findOne({ email: email }, (err, foundUser) => {
+            console.log('error', err)
+            console.log(foundUser)
             // error handling
             if (err) return done(err)
             // no user is found

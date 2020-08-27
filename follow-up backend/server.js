@@ -1,10 +1,10 @@
 // imports
 const express = require('express')
-const routes = require('./routes')
 const cors = require('cors')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const passport = require('./passport')
+const routes = require('./routes')
 
 const port = process.env.PORT || 3001
 const app = express()
@@ -40,6 +40,10 @@ app.use(passport.session())
 
 // middleware - API routes 
 // app.use('/api/v1/app', routes.app)
+app.use((req, res, next) => {
+    console.log('testing server')
+    next()
+})
 app.use('/api/v1/auth', routes.auth)
 
 // connection
