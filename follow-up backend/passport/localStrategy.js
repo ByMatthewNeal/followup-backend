@@ -7,6 +7,7 @@ const strategy = new localStrategy(
     // callback function that verifies the user
     function(email, password, done) {
         // find a user through the unique property - email
+        console.log(email, password)
         User.findOne({ email: email }, (err, foundUser) => {
             // error handling
             if (err) return done(err)
