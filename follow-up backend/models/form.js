@@ -9,7 +9,10 @@ const FormSchema = new Schema({
     location: String,
     name: String,
     title: String,
-    username: String,
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
 })
 
 const Form = mongoose.model('Form', FormSchema);

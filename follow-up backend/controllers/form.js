@@ -1,7 +1,7 @@
 const db = require('../models')
 
 const index = (req, res) => {
-    db.Form.find({}, (err, foundForm) => {
+    db.Form.find({user: req.user._id}, (err, foundForm) => {
         if (err) console.log('Error in form#index:', err)
         
         if(!foundForm) return res.json({
@@ -25,9 +25,10 @@ const show = (req, res) => {
 }
 
 const create = (req, res) => {
+    req.body.user = req.user._id
     db.Form.create(req.body, (err, savedForm) => {
         if (err) console.log('Error in form#create:', err)
-
+        
         // Validations and error handling here
 
         res.status(200).json({ form: savedForm })
