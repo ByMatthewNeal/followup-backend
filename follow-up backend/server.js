@@ -39,7 +39,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 // middleware - API routes 
-// app.use('/api/v1/app', routes.app)
+app.use('/api/v1/form', routes.form)
 app.use((req, res, next) => {
     console.log('testing server')
     next()
