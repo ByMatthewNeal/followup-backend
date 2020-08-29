@@ -1,4 +1,4 @@
 module.exports = {
-    form: require('./form'),
+    forms: require('./forms'),
     auth: require('./auth')
 }

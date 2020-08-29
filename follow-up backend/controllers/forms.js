@@ -1,20 +1,21 @@
 const db = require('../models')
 
 const index = (req, res) => {
-    db.Form.find({user: req.user._id}, (err, foundForm) => {
-        if (err) console.log('Error in form#index:', err)
+    console.log('get route', req.body)
+    db.Form.find({user: req.user._id}, (err, foundForms) => {
+        if (err) console.log('Error in forms#index:', err)
         
-        if(!foundForm) return res.json({
-            message: 'No Form found in database.'
+        if(!foundForms) return res.json({
+            message: 'No Forms found in database.'
         })
 
-        res.status(200).json({ form: foundForm });
+        res.status(200).json({ forms: foundForms });
     })
 }
 
 const show = (req, res) => {
     db.Form.findById(req.params.id, (err, foundForm) => {
-        if (err) console.log('Error in form#show:', err)
+        if (err) console.log('Error in forms#show:', err)
         
         if (!foundForm) return res.json({
             message: 'Form with provided ID not found.'
@@ -25,9 +26,10 @@ const show = (req, res) => {
 }
 
 const create = (req, res) => {
+    console.log('post route', req.body)
     req.body.user = req.user._id
     db.Form.create(req.body, (err, savedForm) => {
-        if (err) console.log('Error in form#create:', err)
+        if (err) console.log('Error in forms#create:', err)
         
         // Validations and error handling here
 
@@ -51,7 +53,7 @@ const update = (req, res) => {
 
 const destroy = (req, res) => {
     db.Form.findByIdAndDelete(req.params.id, (err, deletedForm) => {
-        if (err) console.log('Error in form#destroy:', err)
+        if (err) console.log('Error in forms#destroy:', err)
         if (!deletedForm) return res.json({
             message: "No form with that ID found."
         })
