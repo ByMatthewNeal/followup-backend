@@ -2,7 +2,7 @@ const db = require('../models')
 
 const index = (req, res) => {
     console.log('get route', req.body)
-    db.Form.find({user: req.user._id}, (err, foundForms) => {
+    db.Form.find({user: req.user.id}, (err, foundForms) => {
         if (err) console.log('Error in forms#index:', err)
         
         if(!foundForms) return res.json({
