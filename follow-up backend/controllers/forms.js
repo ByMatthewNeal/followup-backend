@@ -1,10 +1,10 @@
 const db = require('../models')
 
 const index = (req, res) => {
-    console.log('get route', req.body)
-    db.Form.find({user: req.user.id}, (err, foundForms) => {
+    console.log('get route', req.user)
+    db.Form.find({user: req.user._id}, (err, foundForms) => {
         if (err) console.log('Error in forms#index:', err)
-        
+        console.log('found forms', foundForms)
         if(!foundForms) return res.json({
             message: 'No Forms found in database.'
         })
